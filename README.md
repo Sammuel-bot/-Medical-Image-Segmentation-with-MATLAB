@@ -2,8 +2,8 @@
 
 > Visualizing and labeling 2D/3D medical image data using MATLAB's Medical Image Labeler app and Image Processing Toolbox.
 
-![MATLAB](https://img.shields.io/badge/MATLAB-R2023a%2B-orange?style=flat-square&logo=mathworks)
-![Toolbox](https://img.shields.io/badge/Medical%20Imaging%20Toolbox-required-blue?style=flat-square)
+![MATLAB](https://img.shields.io/badge/MATLAB-Online-orange?style=flat-square&logo=mathworks)
+![Toolbox](https://img.shields.io/badge/Image%20Processing%20Toolbox-required-blue?style=flat-square)
 ![Format](https://img.shields.io/badge/Formats-DICOM%20%7C%20NIfTI-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
 
@@ -11,24 +11,48 @@
 
 ## Overview
 
-This project demonstrates hands-on medical image segmentation using MATLAB. It covers importing DICOM and NIfTI files, manually annotating anatomical structures across 2D slices and 3D volumes, exporting labeled ground truth data for machine learning, and generating animated visualizations.
+Hands-on medical image segmentation using MATLAB's Medical Image Labeler app. Covers importing DICOM and NIfTI files, annotating anatomical structures across 2D slices and 3D volumes, exporting labeled ground truth data, and generating animated GIF visualizations.
 
-Originally completed as a lab/group project at the University of Ghana, School of Engineering Sciences.
+Completed as a lab project at the **University of Ghana, School of Engineering Sciences**.  
+Scripts updated to run on **MATLAB Online** using built-in sample data — no file uploads needed.
 
 ---
 
-## What's in this repo
+## Results
+
+### 3D CT Volume — Sagittal Plane
+| Original | Labeled |
+|---|---|
+| ![Original Sagittal](sample_output/original_sagittal.png) | ![Labeled Sagittal](sample_output/labeled_sagittal.png) |
+
+### 3D CT Volume — Coronal Plane
+| Original | Labeled |
+|---|---|
+| ![Original Coronal](sample_output/original_coronal.png) | ![Labeled Coronal Heart](sample_output/labeled_coronal_heart.png) |
+
+### Ultrasound — Human Heart (2D)
+| Original | Labeled |
+|---|---|
+| ![Original Ultrasound](sample_output/original_ultrasound.png) | ![Labeled Ultrasound](sample_output/labeled_ultrasound.png) |
+
+### CT Transverse Slice — Lungs
+| Original | Labeled |
+|---|---|
+| ![Original CT Lungs](sample_output/original_ct_lungs.png) | ![Labeled CT Lungs](sample_output/labeled_ct_lungs.png) |
+
+> Labels include: heart, lungs, vertebral column, and cardiac ventricles
+
+---
+
+## Repo Structure
 
 ```
 matlab-medical-labeler/
 ├── scripts/
-│   ├── load_and_visualize.m     # Load DICOM/NIfTI files and display slices
-│   ├── polygon_roi_label.m      # Draw polygon ROIs and create masks
-│   └── export_gif.m             # Export animated GIF of labeled volume
-├── sample_output/
-│   └── (place your exported .mat and .gif files here)
-├── docs/
-│   └── lab_report.pdf           # Original lab report
+│   ├── load_and_visualize.m     # Load & display MRI slices (works in MATLAB Online)
+│   ├── polygon_roi_label.m      # Draw polygon ROIs and export masks
+│   └── export_gif.m             # Export animated GIF of volume slices
+├── sample_output/               # Screenshots and GIFs from the original lab
 └── README.md
 ```
 
@@ -38,106 +62,54 @@ matlab-medical-labeler/
 
 | Skill | Details |
 |---|---|
-| **Medical Image I/O** | Read DICOM series and NIfTI volumes using `dicomreadVolume`, `niftiread` |
-| **Multi-planar Visualization** | Display sagittal, coronal, and transverse slices from 3D volumes |
-| **Interactive Annotation** | Used Polygon ROI and manual interpolation to label 10+ frames per series |
-| **3D Volume Segmentation** | Labeled heart, lungs, and vertebral column across volumetric CT data |
-| **Ground Truth Export** | Exported annotations as `groundTruthMedical` objects (`.mat`) for ML pipelines |
+| **Medical Image I/O** | Read DICOM series and NIfTI volumes |
+| **Multi-planar Visualization** | Sagittal, coronal, and transverse slice display |
+| **Interactive Annotation** | Polygon ROI + manual interpolation across 10+ frames per series |
+| **3D Volume Segmentation** | Labeled heart, lungs, vertebral column across volumetric CT data |
+| **Ground Truth Export** | Exported annotations as `groundTruthMedical` objects for ML pipelines |
 | **GIF Animation** | Generated and exported animated slice-through visualizations |
 
 ---
 
-## Labeled Structures
+## Running the Scripts (MATLAB Online)
 
-- **3D CT Volume** — Heart, lungs, vertebral column (sagittal + coronal planes)
-- **Ultrasound (2D)** — Cardiac ventricles across 10 frames using manual interpolation
-- **CT Transverse Slice** — Lung boundaries via Polygon ROI
+All scripts use MATLAB's built-in `mri` dataset — no uploads needed.
 
----
-
-## Requirements
-
-- MATLAB R2023a or later
-- [Medical Imaging Toolbox](https://www.mathworks.com/products/medical-imaging.html)
-- Image Processing Toolbox
-
-Install the Medical Imaging Toolbox from the MATLAB Add-On Explorer or MathWorks website.
-
----
-
-## Usage
-
-### 1. Load and visualize a DICOM volume
-
+**1. Visualize MRI slices**
 ```matlab
-% Load a DICOM series
-[V, spatial] = dicomreadVolume('path/to/dicom_folder/');
-
-% View sagittal and coronal slices
-sagittal = squeeze(V(128, :, :));
-coronal  = squeeze(V(:, 128, :));
-
-figure;
-subplot(1,2,1); imshow(sagittal, []); title('Sagittal');
-subplot(1,2,2); imshow(coronal,  []); title('Coronal');
+% Paste load_and_visualize.m into the editor and hit Run
+% You'll get: multi-planar view, montage, and 3D isosurface
 ```
 
-### 2. Open Medical Image Labeler
-
-```
-Apps → Image Processing and Computer Vision → Medical Image Labeler
-```
-
-- **Volume session** for 3D NIfTI/DICOM stacks
-- **Image session** for 2D files
-- Use **Polygon ROI** to outline regions of interest
-- Use **Manual Interpolation** (right-click → Interpolate) to fill labels between keyframes
-
-### 3. Export labeled data
-
-After labeling, export from the app:
-
-```
-File → Export Labels → groundTruthMedical
-```
-
-Then load it in MATLAB:
-
+**2. Draw a Polygon ROI**
 ```matlab
-load('groundTruthMedical.mat');  % loads 'gTruth'
-gTruth.LabelDefinitions          % inspect label names
+% Paste polygon_roi_label.m and hit Run
+% Draw your polygon on the image, double-click inside to confirm
+% Mask saves automatically to MATLAB Drive
 ```
 
-### 4. Generate a GIF
-
+**3. Export a GIF**
 ```matlab
-% Run the export script
-run('scripts/export_gif.m')
-% Output: labeled_volume.gif
+% Paste export_gif.m and hit Run
+% brain_slices.gif saves to MATLAB Drive
+% Download it from drive.matlab.com
 ```
 
 ---
-
-## Results
-
-| Image | Plane | Structures Labeled |
-|---|---|---|
-| 3D CT Volume | Sagittal | Vertebral column |
-| 3D CT Volume | Coronal | Heart, Lungs |
-| Ultrasound | 2D (10 frames) | Cardiac ventricles |
-| CT Slice | Transverse | Lungs |
-
-> Screenshots of labeled outputs are in `sample_output/`.
-
----
-
 ## Background
 
 Medical image labeling is a critical step in building AI-powered diagnostic tools. Labeled datasets (ground truth) are used to train deep learning segmentation models — such as U-Net — that can automatically identify anatomical structures in clinical scans. This project provided hands-on experience with the full annotation pipeline used in real medical AI workflows.
 
 ---
+## Requirements
+
+- [MATLAB Online](https://matlab.mathworks.com) (free account) — or MATLAB R2023a+
+- Image Processing Toolbox
+
+---
 
 ## References
 
-- [MATLAB Medical Image Labeler Documentation](https://www.mathworks.com/help/images/medical-image-labeler-app.html)
+- [MATLAB Medical Image Labeler Docs](https://www.mathworks.com/help/images/medical-image-labeler-app.html)
 - Yang et al., "Classification of Medical Image Notes for Image Labeling by Using MinBERT," *Tsinghua Science and Technology*, 2023. [DOI](https://doi.org/10.26599/TST.2022.9010012)
+
