@@ -38,7 +38,7 @@ Scripts updated to run on **MATLAB Online** using built-in sample data — no fi
 ### Ultrasound — Human Heart (2D)
 | Original | Labeled |
 |---|---|
-| ![Original Ultrasound](Original_Ultrasound.jpeg) | ![Labeled Ultrasound](Labelled_Ultrasound.jpeg) |
+| ![Original Ultrasound](Original_Ultrasound.jpeg) | ![Labeled Ultrasound](sample_output/Labelled Ultrasound.jpeg) |
 
 ### CT Transverse Slice — Lungs
 | Original | Labeled |
