@@ -23,27 +23,27 @@ Scripts updated to run on **MATLAB Online** using built-in sample data — no fi
 ### 3D CT Volume — Sagittal Plane
 | Original | Labeled |
 |---|---|
-| ![Original Sagittal](sample_output/Original_Sagittal.jpeg) | ![Labeled Sagittal](sample_output/Labeled_Sagittal.jpeg) |
+| ![Original Sagittal](Original_Sagittal.jpeg) | ![Labeled Sagittal](Labeled_Sagittal.jpeg) |
 
 ### 3D CT Volume — Coronal Plane
 | Original | Labeled (Heart) | Labeled (Lungs) |
 |---|---|---|
-| ![Original Coronal](sample_output/Original_Coronal.jpeg) | ![Labeled Coronal Heart](sample_output/Labeled_Coronal_Heart.jpeg) | ![Labeled Coronal Lungs](sample_output/Labeled_Coronal_Lungs.jpeg) |
+| ![Original Coronal](Original_Coronal.jpeg) | ![Labeled Coronal Heart](Labeled_Coronal_Heart.jpeg) | ![Labeled Coronal Lungs](Labeled_Coronal_Lungs.jpeg) |
 
 ### 3D Volume Render
 | Original | Labeled |
 |---|---|
-| ![Original Volume](sample_output/Original_Volume_Image.jpeg) | ![Labeled Volume](sample_output/Labeled_Volume_Image.jpeg) |
+| ![Original Volume](Original_Volume_Image.jpeg) | ![Labeled Volume](Labeled_Volume_Image.jpeg) |
 
 ### Ultrasound — Human Heart (2D)
 | Original | Labeled |
 |---|---|
-| ![Original Ultrasound](sample_output/Original_Ultrasound.jpeg) | ![Labeled Ultrasound](sample_output/Labelled_Ultrasound.jpeg) |
+| ![Original Ultrasound](Original_Ultrasound.jpeg) | ![Labeled Ultrasound](Labelled_Ultrasound.jpeg) |
 
 ### CT Transverse Slice — Lungs
 | Original | Labeled |
 |---|---|
-| ![Original CT Lungs](sample_output/Original_CT_Lungs.jpeg) | ![Labeled CT Lungs](sample_output/Labeled_CT_Lungs.jpeg) |
+| ![Original CT Lungs](Original_CT_Lungs.jpeg) | ![Labeled CT Lungs](Labeled_CT_Lungs.jpeg) |
 
 > Labels include: heart, lungs, vertebral column, cardiac ventricles, and tumors
 
